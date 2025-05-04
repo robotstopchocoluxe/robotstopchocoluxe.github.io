@@ -193,16 +193,13 @@
             border: none;
             display: none;
         }
-        #audioPlayer {
-            display: none; /* Initially hidden */
-        }
     </style>
 </head>
 <body class="bg-light-yellow font-sans">
     <h1 class="chocolate-brown mt-4 text-2xl font-semibold">Welcome to ChocoLuxe</h1>
     <p class="mb-4 text-md text-center">Indulge in the finest chocolate delights.</p>
     <button id="mainButton" onclick="location.href='https://helloukchocoluxe.wixsite.com/en-uk';" class="chocolate-button">Continue to Website</button>
-     <div class="g-recaptcha" data-sitekey="6LfSGy0rAAAAABrZo9psJ8oojwTibgc_XpABOWLJ" data-callback="verificationCallback"></div>
+     <div class="g-recaptcha" data-sitekey="6LfSGy0rAAAAABrZo9psJ8oojwTibgc_XpABOWLJ" data-callback="enableButton"></div>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <p id="verifications-text">Other verification methods</p>
     <div id="verificationsModal" class="modal">
@@ -217,7 +214,6 @@
             <iframe id="embed-container" src="https://thresa24337.softr.app/login"></iframe>
         </div>
     </div>
-    <audio id="audioPlayer" src="project.mp3"></audio>
     <script>
         const mainButton = document.getElementById('mainButton');
         const verificationsLink = document.getElementById('verifications-text');
@@ -226,23 +222,12 @@
         const googleLoginButton = document.getElementById('google-login-button');
         const embedContainer = document.getElementById('embed-container');
         const modalContent = document.querySelector('.modal-content');
-        const audioPlayer = document.getElementById('audioPlayer');
 
-        function verificationCallback(response) {
-            if (response) {
-                enableButton();
-                playAudio();
-            }
-        }
 
         function enableButton() {
             mainButton.disabled = false;
             mainButton.style.opacity = 1;
             mainButton.style.pointerEvents = 'auto';
-        }
-
-        function playAudio() {
-            audioPlayer.play();
         }
 
         verificationsLink.addEventListener('click', () => {
@@ -267,6 +252,8 @@
             // Show the embed container
             embedContainer.style.display = 'block';
         });
+
+
     </script>
 </body>
 </html>
